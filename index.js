@@ -12,6 +12,6 @@ const authController = require('./controllers/auth');
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use('/auth', authController);
+app.use('/api/auth', authController);
 
 app.listen(5000);
