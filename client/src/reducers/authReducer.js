@@ -1,12 +1,10 @@
-import { AUTH_USER, UNAUTH_USER } from '../actions/types';
+import { FETCH_USER } from '../actions/types';
 
 export default (state = {}, action) => {
     switch (action.type) {
-        case AUTH_USER:
-            return { ...state, isAuthenticated: true };
-        case UNAUTH_USER:
-            return { ...state, isAuthenticated: false };
-        default:        
+        case FETCH_USER:
+            return { user: action.payload };
+        default:
             return state;
     }
 };
