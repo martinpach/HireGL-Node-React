@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import logo from '../images/hiregl_logo.png';
 import { Field, reduxForm } from 'redux-form';
 import LoginField from './LoginField';
-import { loginUser } from '../actions';
-import { bindActionCreators } from 'redux';
+import * as actions from '../actions';
+import { connect } from 'react-redux';
 
-class Login extends Component {
+class LoginForm extends Component {
     handleFormSubmit(values) {
         this.props.loginUser(values);
+        this.props.history.push('/home');
     };
 
     render() {
@@ -24,7 +25,7 @@ class Login extends Component {
                         component={LoginField}
                     />
                     <Field
-                        type="text"
+                        type="password"
                         name="password"
                         label="password"
                         component={LoginField}
@@ -48,11 +49,9 @@ const validate = values => {
     return errors;
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ loginUser }, dispatch);
-}
-
 export default reduxForm({
     validate,
     form: 'LoginForm'
-}, null, mapDispatchToProps)(Login);
+})(
+    connect(null, actions)(LoginForm)
+);

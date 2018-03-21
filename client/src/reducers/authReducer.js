@@ -6,7 +6,7 @@ export default (state = {}, action) => {
             return { ...state, isAuthenticated: true };
         case UNAUTH_USER:
             return { ...state, isAuthenticated: false };
-        default:
+        default:        
             return state;
     }
 };
