@@ -7,8 +7,7 @@ import { connect } from 'react-redux';
 
 class LoginForm extends Component {
     handleFormSubmit(values) {
-        this.props.loginUser(values);
-        this.props.history.push('/home');
+        this.props.loginUser(values, () => this.props.history.push('/home'));
     };
 
     render() {
@@ -30,6 +29,7 @@ class LoginForm extends Component {
                         label="password"
                         component={LoginField}
                     />
+                    <div className="text-danger">{this.props.loginError}</div>
                     <button type="submit" className="btn btn-success">Submit</button>
                 </form>
             </div>
@@ -49,9 +49,15 @@ const validate = values => {
     return errors;
 };
 
+const mapStateToProps = state => {
+    return {
+        loginError: state.auth.loginError
+    }
+}
+
 export default reduxForm({
     validate,
     form: 'LoginForm'
 })(
-    connect(null, actions)(LoginForm)
+    connect(mapStateToProps, actions)(LoginForm)
 );
