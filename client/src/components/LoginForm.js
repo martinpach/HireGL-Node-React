@@ -6,6 +6,12 @@ import * as actions from '../actions';
 import { connect } from 'react-redux';
 
 class LoginForm extends Component {
+    componentWillMount() {
+        if (this.props.isAuthenticated) {
+            this.props.history.push('/home');
+        }
+    }
+
     handleFormSubmit(values) {
         this.props.loginUser(values, () => this.props.history.push('/home'));
     };
@@ -51,6 +57,7 @@ const validate = values => {
 
 const mapStateToProps = state => {
     return {
+        isAuthenticated: state.auth.isAuthenticated,
         loginError: state.auth.loginError
     }
 }

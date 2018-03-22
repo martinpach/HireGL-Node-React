@@ -7,7 +7,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-const authController = require('./controllers/auth');
+const authController = require('./routes/auth');
 
 
 app.use(morgan('combined'));

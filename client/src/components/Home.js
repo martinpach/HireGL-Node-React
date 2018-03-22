@@ -1,27 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class Home extends Component {
-    componentWillMount() {
-        if (!this.props.user) {
-            return this.props.history.push('/');
-        }
-    }
-    
     render() {
         return (
             <div>
-                Home
+                <button type="button" className="btn btn-danger" onClick={this.props.logoutUser}>Logout</button>
             </div>
         );
-
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.auth.user
-    };
-}
-
-export default connect(mapStateToProps)(Home);
+export default connect(null, actions)(Home);
