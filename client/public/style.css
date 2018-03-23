@@ -2,6 +2,10 @@
     background-color: #e2f441;
 }
 
+.lightgrey{
+    background-color: #f7f7f7;
+}
+
 .full-width{
     width: 100%;
 }
@@ -18,4 +22,8 @@
     text-decoration: none;
     cursor: pointer;
     color: black;
+}
+
+.no-padding{
+    padding: 0;
 }

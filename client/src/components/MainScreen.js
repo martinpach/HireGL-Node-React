@@ -9,7 +9,7 @@ class MainScreen extends Component{
             return <div></div>;
         }
         return (
-            <div className="col-md-9" style={{padding: 0}}>
+            <div className="col-md-9 no-padding">
                 <MainScreenHeader user={this.props.user} logoutUser={this.props.logoutUser}/>
             </div>
         );
