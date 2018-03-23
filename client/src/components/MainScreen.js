@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 import MainScreenHeader from './MainScreenHeader';
 import * as actions from '../actions';
 import SideBar from './SideBar';
+import { MY_INTERVIEWS_TAB } from '../actions/types';
 
 class MainScreen extends Component{
+    componentWillMount() {
+        if (!this.props.selectedTab) {
+            this.props.changeSelectedMenuTab(MY_INTERVIEWS_TAB);
+        }
+    }
+
     render() {
         if (!this.props.user) {
             return <div></div>;
@@ -15,7 +22,7 @@ class MainScreen extends Component{
                     <SideBar changeSelectedMenuTab={this.props.changeSelectedMenuTab}/>
                 </div>
                 <div className="col-md-9 no-padding">
-                    <MainScreenHeader user={this.props.user} logoutUser={this.props.logoutUser}/>
+                    <MainScreenHeader user={this.props.user} logoutUser={this.props.logoutUser} selectedTabTitle={this.props.menu.title}/>
                 </div>
             </div>
         );
@@ -24,7 +31,8 @@ class MainScreen extends Component{
 
 const mapStateToProps = state => {
     return {
-        user: state.auth.user
+        user: state.auth.user,
+        menu: state.menu
     }
 }
 
