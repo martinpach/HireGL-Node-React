@@ -33,3 +33,11 @@
     padding: 0 10px;
     cursor: pointer;
 }
+
+.selected-tab{
+    background-color: #dbd9d9;
+}
+
+.selected-tab:hover{
+    background-color: #dbd9d9;    
+}
