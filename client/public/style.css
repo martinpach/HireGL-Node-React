@@ -41,3 +41,14 @@
 .selected-tab:hover{
     background-color: #dbd9d9;    
 }
+
+.right-shadow{
+    box-shadow: 5px 0px 10px 0px lightgrey;
+    z-index: 99;
+}
+
+@media only screen and (min-width: 992px){
+    .full-height{
+        height: 100vh;
+    }
+}

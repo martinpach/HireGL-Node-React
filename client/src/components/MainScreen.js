@@ -18,7 +18,7 @@ class MainScreen extends Component{
         }
         return (
             <div className="row">
-                <div className="col-md-3 text-center no-padding">
+                <div className="col-md-3 text-center no-padding right-shadow full-height">
                     <SideBar changeSelectedMenuTab={this.props.changeSelectedMenuTab} activeTab={this.props.menu.activeTab}/>
                 </div>
                 <div className="col-md-9 no-padding">
