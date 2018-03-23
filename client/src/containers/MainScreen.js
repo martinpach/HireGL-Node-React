@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MainScreenHeader from './MainScreenHeader';
+import Header from '../components/main_screen/Header';
 import * as actions from '../actions';
-import SideBar from './SideBar';
+import SideBar from '../components/main_screen/SideBar';
 import { MY_INTERVIEWS_TAB } from '../actions/types';
 
 class MainScreen extends Component{
@@ -22,7 +22,7 @@ class MainScreen extends Component{
                     <SideBar changeSelectedMenuTab={this.props.changeSelectedMenuTab} activeTab={this.props.menu.activeTab}/>
                 </div>
                 <div className="col-md-9 no-padding">
-                    <MainScreenHeader user={this.props.user} logoutUser={this.props.logoutUser} activeTabTitle={this.props.menu.title}/>
+                    <Header user={this.props.user} logoutUser={this.props.logoutUser} activeTabTitle={this.props.menu.title}/>
                 </div>
             </div>
         );

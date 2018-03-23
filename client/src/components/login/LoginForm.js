@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../images/hiregl_logo.png';
+import logo from '../../images/hiregl_logo.png';
 import { Field, reduxForm } from 'redux-form';
 import LoginField from './LoginField';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 import { connect } from 'react-redux';
 
 class LoginForm extends Component {
