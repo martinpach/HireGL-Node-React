@@ -26,3 +26,9 @@ export function logoutUser() {
         }
     }
 };
+
+export function changeSelectedMenuTab(tab) {
+   return {
+       type: tab
+   }
+}

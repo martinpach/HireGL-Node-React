@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from '../images/hiregl_logo.png';
+import { MY_INTERVIEWS_TAB, NEW_INTERVIEW_TAB } from '../actions/types';
 
-class SideBar extends Component{
-    render() {
-        return (
-            <div className="col-md-3 text-center no-padding">
-                <div className="lightgreen" style={{height: 150}}>
-                    <img src={logo} alt="hiregl-logo" style={{marginTop: 30}}/>
-                </div>
-                <a className="menu-link full-width">My Interviews</a>
-                <a className="menu-link full-width">New Interview</a>
+export default (props) => {
+    return (
+        <div>
+            <div className="lightgreen" style={{ height: 150 }}>
+                <img src={logo} alt="hiregl-logo" style={{ marginTop: 30 }} />
             </div>
-        );
-    }
-}
-
-export default SideBar;
+            <a className="menu-link full-width" onClick={() => props.changeSelectedMenuTab(MY_INTERVIEWS_TAB)}>My Interviews</a>
+            <a className="menu-link full-width" onClick={() => props.changeSelectedMenuTab(NEW_INTERVIEW_TAB)}>New Interview</a>
+        </div>
+    );
+};
