@@ -3,7 +3,6 @@ import logo from '../../images/hiregl_logo.png';
 import { MY_INTERVIEWS_TAB, NEW_INTERVIEW_TAB } from '../../actions/types';
 
 export default (props) => {
-    console.log(props);
     return (
         <div>
             <div className="lightgreen" style={{ height: 150 }}>

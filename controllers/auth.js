@@ -13,15 +13,8 @@ module.exports = {
         const { user } = req;
 
         const response = {
-            user: {
-                firstName: user.firstName,
-                lastName: user.lastName,
-                username: user.username,
-                email: user.email
-            },
             token: tokenForUser(user)
         }
-
         res.send(response);
     },
     register(req, res, next) {
@@ -52,5 +45,8 @@ module.exports = {
                 res.status(200).send();
             });
         });
+    },
+    getUser(req, res, next) {
+        res.send(req.user);
     }
 }

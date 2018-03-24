@@ -12,4 +12,6 @@ router.get('/logout', requireAuth, (req, res) => res.status(200).send());
 
 router.post('/register', (req, res, next) => authService.register(req, res, next));
 
+router.get('/user', requireAuth, (req, res, next) => authService.getUser(req, res));
+
 module.exports = router;

@@ -7,9 +7,16 @@ import { MY_INTERVIEWS_TAB } from '../actions/types';
 
 class MainScreen extends Component{
     componentWillMount() {
+        
+        console.log(localStorage);
+        this.props.fetchUserInfo();
+        console.log(this.props);
         if (!this.props.menu.activeTab) {
             this.props.changeSelectedMenuTab(MY_INTERVIEWS_TAB);
         }
+    }
+    
+    componentDidMount() {
     }
 
     render() {
