@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { LOGIN_ERROR, AUTH_USER, UNAUTH_USER, FETCH_USER } from './types';
+import { LOGIN_ERROR, AUTH_USER, UNAUTH_USER, FETCH_USER, FETCH_INTERVIEWS } from './types';
 
-const buildAuthHeader = token => {
+const buildAuthHeader = () => {
     return {
-        headers: { authentication: token }
+        headers: { authentication: localStorage.getItem('token') }
     };
 }
 
@@ -23,7 +23,7 @@ export function loginUser({ username, password }, callback) {
 export function logoutUser() {
     return async dispatch => {
         try {
-            await axios.get('/api/auth/logout', buildAuthHeader(localStorage.getItem('token')));
+            await axios.get('/api/auth/logout', buildAuthHeader());
             localStorage.removeItem('token');
             dispatch({ type: UNAUTH_USER });
         } catch (error) {
@@ -35,8 +35,8 @@ export function logoutUser() {
 export function fetchUserInfo() {
     return async dispatch => {
         try {
-            const response = await axios.get('/api/auth/user', buildAuthHeader(localStorage.getItem('token')));
-            dispatch({ type: FETCH_USER, payload: response.data })
+            const response = await axios.get('/api/auth/user', buildAuthHeader());
+            dispatch({ type: FETCH_USER, payload: response.data });
         } catch (error) {
             dispatch({ type: UNAUTH_USER });
         }
@@ -47,4 +47,15 @@ export function changeSelectedMenuTab(tab) {
    return {
        type: tab
    }
+}
+
+export function fetchInterviews(start = 0, limit = 5) {
+    return async dispatch => {
+        try {
+            const response = await axios.get(`/api/interviews?start=${start}&limit=${limit}`, buildAuthHeader());
+            dispatch({ type: FETCH_INTERVIEWS, payload: response.data });
+        } catch (error) {
+            dispatch({ type: UNAUTH_USER });
+        }
+    }
 }

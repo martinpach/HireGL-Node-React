@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './authReducer';
 import MenuReducer from './menuReducer';
-import { reducer as formReducer } from 'redux-form';
+import InterviewsReducer from './interviewsReducer';
+import { reducer as FormReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
     auth: AuthReducer,
     menu: MenuReducer,
-    form: formReducer
+    interviews: InterviewsReducer,
+    form: FormReducer
 });
 
 export default rootReducer;

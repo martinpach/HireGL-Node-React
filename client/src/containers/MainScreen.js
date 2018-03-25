@@ -7,10 +7,8 @@ import { MY_INTERVIEWS_TAB } from '../actions/types';
 
 class MainScreen extends Component{
     componentWillMount() {
-        
-        console.log(localStorage);
         this.props.fetchUserInfo();
-        console.log(this.props);
+        this.props.fetchInterviews();
         if (!this.props.menu.activeTab) {
             this.props.changeSelectedMenuTab(MY_INTERVIEWS_TAB);
         }
@@ -23,6 +21,7 @@ class MainScreen extends Component{
         if (!this.props.user || !this.props.menu) {
             return <div></div>;
         }
+        
         return (
             <div className="row">
                 <div className="col-md-3 text-center no-padding right-shadow full-height">
@@ -39,7 +38,8 @@ class MainScreen extends Component{
 const mapStateToProps = state => {
     return {
         user: state.auth.user,
-        menu: state.menu
+        menu: state.menu,
+        interviews: state.interviews
     }
 }
 
