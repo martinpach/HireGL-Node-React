@@ -8,7 +8,7 @@ import MainScreen from '../containers/MainScreen';
 const App = () => {
     return (
         <BrowserRouter>
-            <div className="container">
+            <div className="container-fluid">
                 <Switch>
                     <Route path="/home" component={requireAuthentication(MainScreen)} />
                     <Route path="/" component={LoginForm} />

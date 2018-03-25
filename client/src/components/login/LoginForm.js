@@ -18,7 +18,7 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <div className="col-md-4 col-md-offset-4">
+            <div className="col-md-4 offset-md-4">
                 <div className="lightgreen text-center">
                     <img src={logo} alt="hiregl-logo"/>
                 </div>
@@ -36,7 +36,7 @@ class LoginForm extends Component {
                         component={LoginField}
                     />
                     <div className="text-danger">{this.props.loginError}</div>
-                    <button type="submit" className="btn btn-success">Submit</button>
+                    <button type="submit" className="btn btn-success float-right">Submit</button>
                 </form>
             </div>
         );
