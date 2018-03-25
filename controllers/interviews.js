@@ -6,9 +6,9 @@ module.exports = {
         let { limit, start } = req.query;
         limit = parseInt(limit);
         start = parseInt(start);
-        
+
         try {
-            const interviews = await Interview.find().skip(start).limit(limit);
+            const interviews = await Interview.find().skip(start).limit(limit).populate('interview.user');
             res.send(interviews);
         } catch (error) {
             next(error);
