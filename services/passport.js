@@ -5,7 +5,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const config = require('./config');
 const mongoose = require('mongoose');
 
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 
 const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromHeader('authentication'),

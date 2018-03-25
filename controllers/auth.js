@@ -2,7 +2,7 @@ const jwt = require('jwt-simple');
 const config = require('../services/config');
 const mongoose = require('mongoose');
 
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 
 
 
