@@ -17,20 +17,13 @@ module.exports = {
         }
         res.send(response);
     },
-    register(req, res, next) {
-        const username = req.body.username;
-        const password = req.body.password;
-        const email = req.body.email;
-        const firstName = req.body.firstName;
-        const lastName = req.body.lastName;
-
-        User.findOne({ username }, (err, existingUser) => {
-            if (err) { return next(err); }
-
+    async register(req, res, next) {
+        const { username, password, email, firstName, lastName } = req.body;
+        try {
+            const existingUser = await User.findOne({ username });
             if (existingUser) {
                 return res.status(422).send({ error: 'Email is in use' });
             }
-
             const user = new User({
                 username,
                 password,
@@ -39,12 +32,12 @@ module.exports = {
                 lastName
             });
 
-            user.save(err => {
-                if (err) { return next(err); }
+            await user.save();
+            res.status(200).send();
 
-                res.status(200).send();
-            });
-        });
+        } catch (error) {
+            return next(err);
+        }
     },
     getUser(req, res, next) {
         res.send(req.user);
