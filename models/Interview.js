@@ -22,7 +22,8 @@ const interviewSchema = new Schema({
     note: String,
     status: {
         type: String,
-        enum: ['CREATED', 'CLOSED']
+        enum: ['CREATED', 'CLOSED'],
+        default: 'CREATED'
     },
     user: {
         type: mongoose.SchemaTypes.ObjectId, 

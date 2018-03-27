@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from 'react-md-spinner';
 
 const InterviewRow = interview => {
     return (
@@ -15,7 +16,7 @@ const InterviewRow = interview => {
 
 export default (props) => {
     if (!props.interviews) {
-        return <div></div>;
+        return <div className="text-center mt-5"><Spinner singleColor="rgb(76, 175, 80)" size="50"/></div>;
     }
 
     const rows = props.interviews.map(interview => InterviewRow(interview));
