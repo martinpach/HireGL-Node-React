@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { LOGIN_ERROR, AUTH_USER, UNAUTH_USER, FETCH_USER, FETCH_INTERVIEWS, FETCH_COUNT } from './types';
+import Cache from '../utils/Cache';
+
+const cache = new Cache({ invalidateAfter: 60000 });
 
 const buildAuthHeader = () => {
     return {
@@ -25,6 +28,7 @@ export function logoutUser() {
         try {
             await axios.get('/api/auth/logout', buildAuthHeader());
             localStorage.removeItem('token');
+            cache.invalidateCache();
             dispatch({ type: UNAUTH_USER });
         } catch (error) {
             dispatch({ type: UNAUTH_USER });
@@ -52,7 +56,14 @@ export function changeSelectedMenuTab(tab) {
 export function fetchInterviews(start = 0, limit = 5) {
     return async dispatch => {
         try {
+            const cacheKey = `${start}-${limit}`;
+            const cachedInterviews = cache.getFromCache(cacheKey);
+            if (cachedInterviews) {
+                return dispatch({ type: FETCH_INTERVIEWS, payload: cachedInterviews });
+            }
+
             const response = await axios.get(`/api/interviews?start=${start}&limit=${limit}`, buildAuthHeader());
+            cache.addToCache(cacheKey, response.data);
             dispatch({ type: FETCH_INTERVIEWS, payload: response.data });
         } catch (error) {
             dispatch({ type: UNAUTH_USER });
