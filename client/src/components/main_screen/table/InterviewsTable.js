@@ -30,7 +30,7 @@ export default (props) => {
                 </div>
             </div>
             <div className="row">
-                <div className="offset-xl-8 col-xl-6 offset-lg-7 col-lg-5 offset-sm-6 col-sm-6 offset-5">
+                <div className="offset-xl-8 col-xl-4 offset-lg-7 col-lg-5 offset-sm-6 col-sm-6 offset-5">
                     <small className="mr-1">Showing {props.interviews.interviews.length} from {props.interviews.numOfInterviews}</small>
                     <div className="btn-group" role="group">
                         <button type="button" className="btn btn-secondary">&lt;</button>
