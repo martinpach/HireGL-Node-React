@@ -5,11 +5,12 @@ import * as actions from '../actions';
 import SideBar from '../components/main_screen/SideBar';
 import { MY_INTERVIEWS_TAB } from '../actions/types';
 import InterviewsTable from '../components/main_screen/table/InterviewsTable';
+import config from '../config';
 
 class MainScreen extends Component {
     componentWillMount() {
         this.props.fetchUserInfo();
-        this.props.fetchInterviews();
+        this.props.fetchInterviews(0, config.interviewsPerPage);
         this.props.fetchNumberOfInterviews();
         if (!this.props.menu.activeTab) {
             this.props.changeSelectedMenuTab(MY_INTERVIEWS_TAB);
@@ -18,7 +19,7 @@ class MainScreen extends Component {
 
     renderConditionally() {
         if (this.props.menu.activeTab === MY_INTERVIEWS_TAB) {
-            return <InterviewsTable interviews={this.props.interviews}/>;
+            return <InterviewsTable interviews={this.props.interviews} fetchInterviews={this.props.fetchInterviews}/>;
         } 
         // TODO: NEW_INTERVIEW_TAb
     }
