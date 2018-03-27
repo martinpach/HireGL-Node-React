@@ -1,27 +1,13 @@
 import React from 'react';
 import Spinner from 'react-md-spinner';
-
-const InterviewRow = interview => {
-    return (
-        <tr key={interview._id}>
-            <td>{interview.candidate.firstName} {interview.candidate.lastName} <br />
-                {interview.candidate.position}</td>
-            <td>{interview.candidate.phone}</td>
-            <td>{interview.candidate.email}</td>
-            <td>{interview.interview.status}</td>
-            <td>TODO</td>
-        </tr>
-    );
-}
-
+import InterviewRow from './InterviewRow';
 
 export default (props) => {
     if (!props.interviews) {
         return <div className="text-center mt-5"><Spinner singleColor="rgb(76, 175, 80)" size="50"/></div>;
     }
 
-    const rows = props.interviews.map(interview => InterviewRow(interview));
-
+    const rows = props.interviews.map(interview => <InterviewRow interview={interview}/>);
 
     return (
         <div className="table-responsive">
