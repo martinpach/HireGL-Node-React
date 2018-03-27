@@ -32,5 +32,13 @@ module.exports = {
         } catch (error) {
             next(error);
         }
+    },
+    async getNumberOfInterviews(req, res, next) {
+        try {
+            const count = await Interview.count();
+            res.send({ count });
+        } catch(error) {
+            next(error);
+        }
     }
 }   

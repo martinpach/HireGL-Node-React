@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOGIN_ERROR, AUTH_USER, UNAUTH_USER, FETCH_USER, FETCH_INTERVIEWS } from './types';
+import { LOGIN_ERROR, AUTH_USER, UNAUTH_USER, FETCH_USER, FETCH_INTERVIEWS, FETCH_COUNT } from './types';
 
 const buildAuthHeader = () => {
     return {
@@ -54,6 +54,17 @@ export function fetchInterviews(start = 0, limit = 5) {
         try {
             const response = await axios.get(`/api/interviews?start=${start}&limit=${limit}`, buildAuthHeader());
             dispatch({ type: FETCH_INTERVIEWS, payload: response.data });
+        } catch (error) {
+            dispatch({ type: UNAUTH_USER });
+        }
+    }
+}
+
+export function fetchNumberOfInterviews() {
+    return async dispatch => {
+        try {
+            const response = await axios.get('/api/interviews/count', buildAuthHeader());
+            dispatch({ type: FETCH_COUNT, payload: response.data.count });
         } catch (error) {
             dispatch({ type: UNAUTH_USER });
         }
