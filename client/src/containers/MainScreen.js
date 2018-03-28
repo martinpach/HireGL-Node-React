@@ -10,7 +10,7 @@ import config from '../config';
 class MainScreen extends Component {
     componentWillMount() {
         this.props.fetchUserInfo();
-        this.props.fetchInterviews(0, config.interviewsPerPage);
+        this.props.fetchInterviews(0);
         this.props.fetchNumberOfInterviews();
         if (!this.props.menu.activeTab) {
             this.props.changeSelectedMenuTab(MY_INTERVIEWS_TAB);

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { LOGIN_ERROR, AUTH_USER, UNAUTH_USER, FETCH_USER, FETCH_INTERVIEWS, FETCH_COUNT } from './types';
 import Cache from '../utils/Cache';
+import config from '../config';
 
 const cache = new Cache({ invalidateAfter: 60000 });
 
@@ -53,7 +54,7 @@ export function changeSelectedMenuTab(tab) {
    }
 }
 
-export function fetchInterviews(start = 0, limit = 5) {
+export function fetchInterviews(start = 0, limit = config.interviewsPerPage) {
     return async dispatch => {
         try {
             const cacheKey = `${start}-${limit}`;

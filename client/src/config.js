@@ -1,3 +1,3 @@
 export default {
-    interviewsPerPage: 4
+    interviewsPerPage: 5
 }

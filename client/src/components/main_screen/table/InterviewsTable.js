@@ -12,7 +12,8 @@ export default class InterviewsTable extends Component {
             firstVisibleInterview += config.interviewsPerPage;
             lastVisibleInterview = firstVisibleInterview + config.interviewsPerPage;
             lastVisibleInterview = lastVisibleInterview > this.props.interviews.numOfInterviews ? this.props.interviews.numOfInterviews : lastVisibleInterview;
-            this.props.fetchInterviews(firstVisibleInterview, lastVisibleInterview);
+            
+            this.props.fetchInterviews(firstVisibleInterview);
         }
     }
 
@@ -20,7 +21,7 @@ export default class InterviewsTable extends Component {
         if (firstVisibleInterview - config.interviewsPerPage >= 0) {
             firstVisibleInterview -= config.interviewsPerPage;
             lastVisibleInterview = firstVisibleInterview + config.interviewsPerPage;
-            this.props.fetchInterviews(firstVisibleInterview, lastVisibleInterview);
+            this.props.fetchInterviews(firstVisibleInterview);
         }
     }
 
